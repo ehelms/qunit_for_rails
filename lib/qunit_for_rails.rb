@@ -1,3 +1,5 @@
+require "qunit_for_rails/version"
+
 module QunitForRails
   def include_qunit(options = { :autohide => false })
     # write to the head of application.html.erb

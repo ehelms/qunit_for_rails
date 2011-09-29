@@ -6,14 +6,14 @@ class QunitForRailsTest < ActiveSupport::TestCase
   include QunitForRails
   
   def setup
-    arr = Dir.entries(File.dirname(__FILE__) + "/../../../../public/javascripts/tests")
+    arr = Dir.entries(File.dirname(__FILE__) + "/../public/javascript/tests")
     @arr_size = arr.size - 2 # removing . and ..
   end
   
   # include_qunit includes string containing qunit js files
   test "will insert javascript files into the head" do
-    assert include_qunit.scan(/javascripts\/qunit.js/)
-    assert include_qunit.scan(/javascripts\/qunit_for_rails.js/)
+    assert include_qunit.scan(/javascript\/qunit.js/)
+    assert include_qunit.scan(/javascript\/qunit_for_rails.js/)
     assert include_qunit.scan(/stylesheets\/qunit_for_rails.css/)
   end
   

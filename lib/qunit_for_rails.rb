@@ -11,22 +11,22 @@ module QunitForRails
           $collection = \"#{collect_tests}\";
           $autohide = \"#{options[:autohide]}\";
       </script>
-      <script type=\"text/javascript\" src=\"/javascripts/qunit.js\"></script>
-      <script type=\"text/javascript\" src=\"/javascripts/qunit_for_rails.js\"></script>
+      <script type=\"text/javascript\" src=\"/javascript/qunit.js\"></script>
+      <script type=\"text/javascript\" src=\"/javascript/qunit_for_rails.js\"></script>
       <link href=\"/stylesheets/qunit_for_rails.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\"/>
     " 
   end
 
   def collect_tests
     response = "<select id='qunit-test-select'><option></option><option>all</option>"
-    Dir.foreach(File.dirname(__FILE__) + "/../../../../public/javascripts/tests") do |f|
+    Dir.foreach(File.dirname(__FILE__) + "/../../../../public/javascript/tests") do |f|
       response << "<option id='#{f}'>#{f}</option>" if f.to_s.size > 4
     end
     response << "</select>"
   end
   
   def list_tests
-    files = Dir.entries(File.dirname(__FILE__) + "/../../../../public/javascripts/tests")
+    files = Dir.entries(File.dirname(__FILE__) + "/../../../../public/javascript/tests")
     files.delete(".")
     files.delete("..")
     files.join(",").to_s

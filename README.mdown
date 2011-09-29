@@ -79,7 +79,7 @@ of the page automatically, you can hide it on load using:
 
 After adding the `<%= include_qunit %>` to the head of your document layout, 
 you simply need to add some test files to the 
-`/public/javascripts/tests directory`.
+`/public/javascript/tests directory`.
 
 The tests are written in JSON and follow a pattern such as:
 

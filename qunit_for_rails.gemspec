@@ -16,8 +16,9 @@ Gem::Specification.new do |s|
   s.add_dependency "activesupport", "~> 3.0.10"
   s.add_dependency "rails", "~> 3.0.10"
   s.add_dependency "capybara", ">= 0.4.0"
+  s.add_dependency 'haml', ['>= 3.0.0']
   s.add_dependency "ruby-debug"
-
+  
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

@@ -1,4 +1,5 @@
 require "qunit_for_rails/version"
+require "qunit_for_rails/engine" if defined?(Rails)
 
 module QunitForRails
   def include_qunit(options = { :autohide => false })

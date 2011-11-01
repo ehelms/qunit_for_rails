@@ -1,7 +1,13 @@
-require "qunit_for_rails/version"
-require "qunit_for_rails/engine" if defined?(Rails)
+require "active_support/dependencies"
 
 module QunitForRails
+
+  mattr_accessor :app_root
+
+  def self.setup
+    yield self
+  end
+
   def include_qunit(options = { :autohide => false })
     # write to the head of application.html.erb
     # include the js and css files required, if RAILS_ENV = development
@@ -34,3 +40,5 @@ module QunitForRails
   end
   
 end
+
+require "qunit_for_rails/engine" if defined?(Rails)

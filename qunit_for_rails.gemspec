@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "qunit_for_rails/version"
+require File.expand_path("../lib/qunit_for_rails/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "qunit_for_rails"
@@ -14,7 +13,12 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "qunit_for_rails"
 
-  s.files         = `git ls-files`.split("\n")
+  s.add_dependency "activesupport", "~> 3.0.10"
+  s.add_dependency "rails", "~> 3.0.10"
+  s.add_dependency "capybara", ">= 0.4.0"
+  s.add_dependency "ruby-debug"
+
+  s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]

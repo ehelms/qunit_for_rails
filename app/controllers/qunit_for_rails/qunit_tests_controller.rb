@@ -4,7 +4,7 @@ module QunitForRails
     unloadable
 
     def index
-      render :nothing => true
+      render :index
     end
 
   end

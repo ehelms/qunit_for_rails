@@ -1,10 +1,17 @@
 module QunitForRails
   class QunitTestsController < ApplicationController
+    layout "qunit_for_rails/main"
     
-    unloadable
-
     def index
-      render :index
+      test_files = []
+      
+      Dir.glob(RAILS_ROOT + "/public/javascripts/test/*").each { |file| 
+        if file.end_with?('_test.html')
+          test_files << file.split('/').last
+        end
+      }
+      
+      render :index, :locals => { :test_files => test_files }
     end
 
   end

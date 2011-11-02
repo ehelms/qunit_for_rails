@@ -1,0 +1,10 @@
+= content_for(:javascripts) do
+  %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/jquery-1.6.4.min.js"}
+  %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/index.js"}
+
+= content_for(:content) do 
+  %ul
+    - for file in test_files
+      %li
+        %a{ :href => compute_public_path(file,'javascripts/test','html') }
+          = file

@@ -6,7 +6,7 @@ module QunitForRails
       test_files = []
       
       Dir.glob(RAILS_ROOT + "/public/javascripts/test/*").each { |file| 
-        if file.end_with?('_test.html')
+        if file.end_with?('_test.js')
           test_files << file.split('/').last
         end
       }

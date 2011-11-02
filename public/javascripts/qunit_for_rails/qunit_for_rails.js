@@ -19,13 +19,24 @@
 
 			// define qunit results
 			var qr = "";
-			qr += "<div id=\"qunit-results\">";
+			//qr += "<div id=\"qunit-results\">";
 			qr += "<h1 id=\"qunit-header\">Results</h1>";
 			qr += "<h2 id=\"qunit-banner\"></h2>";
+            qr += '<div id="qunit-testrunner-toolbar"></div>';
 			qr += "<h2 id=\"qunit-userAgent\"></h2>";
+            qr += '<p id="qunit-testresult" class="result"></p>';
 			qr += "<br /><img id=\"qunit-loading\" src=\"/images/i_loading_bar.gif\" alt=\"loading\">";
 			qr += "<ol id=\"qunit-tests\"></ol>";
+            qr += '<div id="qunit-fixture">test markup</div>';
 			qr += "</div>";
+
+            // tests list select
+            var tl = "";
+            tl += "<select id='qunit-test-select'><option></option><option>all</option>";
+            for(var i = 0; i < test_list.length; i += 1){
+                tl += '<option id="' + test_list[i]  +'">' + test_list[i] + '</option>'; 
+            }
+            tl += "</select>";
 
 			// define qunit-overlay
 			var qo = "";
@@ -33,7 +44,7 @@
 			qo += "<div id=\"qunit-test-options\">";
 			qo += "<ul class=\"qunit\">";
 			qo += "<li class=\"first\"><a id=\"qunit-all-tests\" href=\"#\">Run All Tests</a></li>";
-			qo += "<li class=\"last\">Or Choose A Test: " + $collection;
+			qo += "<li class=\"last\">Or Choose A Test: " + tl;
 			qo += "</ul>";
 			qo += "<img src=\"/images/bg_secondaryNav_right.gif\">";
 			qo += "</div>";
@@ -90,9 +101,10 @@
 		{
 			var fileref=document.createElement('script');
 			fileref.setAttribute("type","text/javascript");
-			fileref.setAttribute("src", "/javascript/tests/" + filename + "?" + Math.floor(Math.random()*11));
-		 	if (typeof fileref!="undefined")
-		  	document.getElementsByTagName("head")[0].appendChild(fileref);
+			fileref.setAttribute("src", "/javascripts/test/" + filename + "?" + Math.floor(Math.random()*11));
+		 	if (typeof fileref !== "undefined"){
+    		  	document.getElementsByTagName("head")[0].appendChild(fileref);
+            }
 		},
 
 		unload_js_file: function unload_js_file(filename)
@@ -120,13 +132,13 @@
 
 		run_tests: function run_tests()
 		{
-			init();
+			QUnit.load();
 			for (var i in tests) {
 				var test = eval(tests[i]);
 				test(test);
 			}
 			$("#qunit-loading").hide();
-			start();
+			QUnit.start();
 		}
 	};
 
@@ -147,14 +159,14 @@
 
 		$("#qunit-test-select").change( function() {
 			tests = {};
-			for(var i in $list) {
-				QUnit_For_Rails.unload_js_file($list[i]);
+			for(var i in test_list) {
+				QUnit_For_Rails.unload_js_file(test_list[i]);
 			}
-			if ($(this).val() != "all") {
+			if ($(this).val() !== "all") {
 				QUnit_For_Rails.load_js_file($(this).val());
 			} else {
-				for(var j in $list) {
-					QUnit_For_Rails.load_js_file($list[j]);
+				for(var j in test_list) {
+					QUnit_For_Rails.load_js_file(test_list[j]);
 				}
 			}
 			QUnit_For_Rails.show_tests();
@@ -166,9 +178,6 @@
 			$("#qunit-test-select").change();
 		});
 
-		if ($autohide == "true") {
-			$('#qunit-overlay').toggle();
-		}
 	});
 	
 })();

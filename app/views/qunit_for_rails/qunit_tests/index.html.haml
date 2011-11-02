@@ -1,10 +1,11 @@
+= content_for(:stylesheets) do
+  %link(rel="stylesheet" type="text/css" href="/stylesheets/qunit_for_rails.css")
+
 = content_for(:javascripts) do
   %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/jquery-1.6.4.min.js"}
   %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/index.js"}
+  %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/qunit.js"}
+  %script{:type => "text/javascript", :src  => "/javascripts/qunit_for_rails/qunit_for_rails.js"}
 
-= content_for(:content) do 
-  %ul
-    - for file in test_files
-      %li
-        %a{ :href => compute_public_path(file,'javascripts/test','html') }
-          = file
+  :javascript
+    var test_list = #{test_files.to_json};

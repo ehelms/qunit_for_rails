@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 h1#qunit-header 
 { 
 	padding: 5px; 
@@ -7,6 +11,7 @@ h1#qunit-header
 	color: yellow; 
 	font-family: 'trebuchet ms', verdana, arial; 
 	margin: 0; 
+	border-radius: 0;
 }
 
 h1#qunit-header a 
@@ -59,9 +64,9 @@ div#qunit-testrunner-toolbar
 
 ol#qunit-tests 
 { 
-	margin-left: 30px; 
 	font-family: 'trebuchet ms', verdana, arial; 
 	font-size: 10pt;
+	border-radius: 0;
 }
 
 ol#qunit-tests li strong 
@@ -78,11 +83,13 @@ ol#qunit-tests .fail
 { 
 	color: red; 
 } 
+#qunit-tests > li:last-child {
+	border-radius: 0;
+}
 
 p#qunit-testresult 
 { 
 	padding-left: 30px; 
-	margin-left: 1em; 
 	font-size: 10pt; 
 	font-family: 'trebuchet ms', verdana, arial; 
 }
@@ -162,7 +169,7 @@ ul.qunit li.last
 #qunit-menu
 {
 	float: left;
-	width: 690px;
+	width: 790px;
 	height: 30px;
 	background: url(/images/bg_diagonalDarkBlue.gif) rgb(51, 51, 51);
 	padding: 2px;

@@ -24,11 +24,11 @@
 			qr += "<h2 id=\"qunit-banner\"></h2>";
             qr += '<div id="qunit-testrunner-toolbar"></div>';
 			qr += "<h2 id=\"qunit-userAgent\"></h2>";
+			qr += "<img id=\"qunit-loading\" src=\"/images/i_loading_bar.gif\" alt=\"loading\">";
             qr += '<p id="qunit-testresult" class="result"></p>';
-			qr += "<br /><img id=\"qunit-loading\" src=\"/images/i_loading_bar.gif\" alt=\"loading\">";
 			qr += "<ol id=\"qunit-tests\"></ol>";
             qr += '<div id="qunit-fixture">test markup</div>';
-			qr += "</div>";
+			//qr += "</div>";
 
             // tests list select
             var tl = "";
@@ -99,12 +99,13 @@
 
 		load_js_file: function load_js_file(filename)
 		{
-			var fileref=document.createElement('script');
+			/*var fileref=document.createElement('script');
 			fileref.setAttribute("type","text/javascript");
 			fileref.setAttribute("src", "/javascripts/test/" + filename + "?" + Math.floor(Math.random()*11));
 		 	if (typeof fileref !== "undefined"){
     		  	document.getElementsByTagName("head")[0].appendChild(fileref);
-            }
+            }*/
+            $.getScript('/javascripts/test/' + filename);
 		},
 
 		unload_js_file: function unload_js_file(filename)
@@ -132,24 +133,25 @@
 
 		run_tests: function run_tests()
 		{
-			QUnit.load();
+			/*QUnit.load();
 			for (var i in tests) {
 				var test = eval(tests[i]);
 				test(test);
 			}
 			$("#qunit-loading").hide();
-			QUnit.start();
+			QUnit.start();*/
 		}
 	};
 
 	$(document).ready(function() 
 	{
+		QUnit.load();
+		
 		QUnit_For_Rails.init();
 
-		$("#qunit-results").hide();
+        $("#qunit-results").hide();
 		$("#qunit-loading").hide();
 		$("#qunit-results").animate({ height: "0px"}, 1 );
-		$('#qunit-menu').toggle();
 
 		if ($.browser.mozilla) {
 			$(document).keypress (QUnit_For_Rails.respond_to_key);
@@ -169,8 +171,8 @@
 					QUnit_For_Rails.load_js_file(test_list[j]);
 				}
 			}
-			QUnit_For_Rails.show_tests();
-			setTimeout(QUnit_For_Rails.run_tests, 2000);
+			//QUnit_For_Rails.show_tests();
+			//setTimeout(QUnit_For_Rails.run_tests, 2000);
 		});
 
 		$("#qunit-all-tests").click( function() {

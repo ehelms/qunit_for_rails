@@ -99,13 +99,11 @@
 
 		load_js_file: function load_js_file(filename)
 		{
-			/*var fileref=document.createElement('script');
-			fileref.setAttribute("type","text/javascript");
-			fileref.setAttribute("src", "/javascripts/test/" + filename + "?" + Math.floor(Math.random()*11));
-		 	if (typeof fileref !== "undefined"){
-    		  	document.getElementsByTagName("head")[0].appendChild(fileref);
-            }*/
-            $.getScript('/javascripts/test/' + filename);
+            $.getScript('/javascripts/test/' + filename, function(){
+                QUnit.config.currentModule = "";
+                QUnit.config.previousModule = "";
+                start();
+            });
 		},
 
 		unload_js_file: function unload_js_file(filename)
@@ -160,19 +158,22 @@
 		}
 
 		$("#qunit-test-select").change( function() {
-			tests = {};
-			for(var i in test_list) {
-				QUnit_For_Rails.unload_js_file(test_list[i]);
-			}
-			if ($(this).val() !== "all") {
-				QUnit_For_Rails.load_js_file($(this).val());
-			} else {
+			if ($(this).val() !== "all" && $(this).val() !== "") {
+                QUnit.init();
+                QUnit.config.autorun = false;
+                QUnit.config.autostart = false;
+                QUnit.config.currentModule = "";
+				
+                QUnit_For_Rails.load_js_file($(this).val());
+			} else if( $(this).val() === "all" ) {
+                QUnit.init();
+                QUnit.config.autorun = false;
+                QUnit.config.autostart = false;
+
 				for(var j in test_list) {
 					QUnit_For_Rails.load_js_file(test_list[j]);
 				}
 			}
-			//QUnit_For_Rails.show_tests();
-			//setTimeout(QUnit_For_Rails.run_tests, 2000);
 		});
 
 		$("#qunit-all-tests").click( function() {

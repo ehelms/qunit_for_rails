@@ -14,11 +14,7 @@ module QunitForRails
     initializer "static assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
-    
-    initializer "interact_with_routes", :after => :disable_dependency_loaading do |app|
-      debugger
-    end
-
+ 
   end
 
 end

@@ -102,7 +102,7 @@
 
 		load_js_file: function load_js_file(filename)
 		{
-            $.getScript('/javascripts/test/' + filename, function(){
+            $.getScript(QFR.root_url + '/javascripts/test/' + filename, function(){
                 QUnit.config.currentModule = "";
                 QUnit.config.previousModule = "";
                 start();

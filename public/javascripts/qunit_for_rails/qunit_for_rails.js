@@ -24,7 +24,7 @@
 			qr += "<h2 id=\"qunit-banner\"></h2>";
             qr += '<div id="qunit-testrunner-toolbar"></div>';
 			qr += "<h2 id=\"qunit-userAgent\"></h2>";
-			qr += "<img id=\"qunit-loading\" src=\"/images/i_loading_bar.gif\" alt=\"loading\">";
+			qr += '<img id="qunit-loading" src="' + QFR.root_url + '/images/i_loading_bar.gif" alt="loading">';
             qr += '<p id="qunit-testresult" class="result"></p>';
 			qr += "<ol id=\"qunit-tests\"></ol>";
             qr += '<div id="qunit-fixture">test markup</div>';
@@ -46,17 +46,20 @@
 			qo += "<li class=\"first\"><a id=\"qunit-all-tests\" href=\"#\">Run All Tests</a></li>";
 			qo += "<li class=\"last\">Or Choose A Test: " + tl;
 			qo += "</ul>";
-			qo += "<img src=\"/images/bg_secondaryNav_right.gif\">";
+			qo += '<img src="' + QFR.root_url + '/images/bg_secondaryNav_right.gif">';
 			qo += "</div>";
 			qo += qm;
 			qo += "<div id=\"qunit-logo\">";
 			qo += "JavaScript testing powered by: <a href=\"http://docs.jquery.com/QUnit\">";
-			qo += "<img src=\"/images/l_qunit.png\" alt=\"qunit\" border=\"0\"></a></div>";
+			qo += '<img src="' + QFR.root_url + '/images/l_qunit.png" alt=\"qunit\" border=\"0\"></a></div>';
 			qo += "</div>";
 			qo += qr;
 			qo += "<div style='clear:both;'></div>";
 			
 			$("body").prepend(qo);
+
+            $('#qunit-menu').css('background', 'url(' + QFR.root_url + '/images/bg_diagonalDarkBlue.gif) rgb(51, 51, 51)');
+            $('ul.qunit').css('background', 'url(' + QFR.root_url + '/images/bg_secondaryNav_left.gif) no-repeat');
 		},
 		
 		respond_to_key: function respond_to_key(e) 

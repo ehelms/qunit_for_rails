@@ -98,7 +98,6 @@ ul.qunit
 {
 	list-style: none;
 	height: 34px;
-	background: url(/images/bg_secondaryNav_left.gif) no-repeat;
 	float: left;
 	margin: 0px;
 	padding: 0px 0px 0px 3px;
@@ -171,7 +170,6 @@ ul.qunit li.last
 	float: left;
 	width: 790px;
 	height: 30px;
-	background: url(/images/bg_diagonalDarkBlue.gif) rgb(51, 51, 51);
 	padding: 2px;
 	margin-top: 6px;
 	margin-left: 40px;

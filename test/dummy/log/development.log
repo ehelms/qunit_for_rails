@@ -4230,3 +4230,68 @@ Started GET "/images/bg_diagonalDarkBlue.gif" for 127.0.0.1 at Wed Nov 02 23:01:
 
 
 Started GET "/images/bg_secondaryNav_left.gif" for 127.0.0.1 at Wed Nov 02 23:01:38 -0400 2011
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /usr/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/test/qunit/" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+  Processing by QunitForRails::QunitTestsController#index as HTML
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from index at /home/edhelms/workspace/qunit_for_rails/app/controllers/qunit_for_rails/qunit_tests_controller.rb:8)
+Rendered /home/edhelms/workspace/qunit_for_rails/app/views/qunit_for_rails/qunit_tests/index.html.haml within layouts/qunit_for_rails/main (15.8ms)
+Completed 200 OK in 22ms (Views: 21.1ms)
+
+
+Started GET "/stylesheets/qunit.css" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/javascripts/qunit_for_rails/index.js" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/javascripts/qunit_for_rails/jquery-1.6.4.min.js" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/javascripts/qunit_for_rails/qunit.js" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/javascripts/qunit_for_rails/qunit_for_rails.js" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/stylesheets/qunit_for_rails.css" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/bg_secondaryNav_right.gif" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/l_qunit.png" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/bg_secondaryNav_left.gif" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/i_loading_bar.gif" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/bg_diagonalDarkBlue.gif" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+
+Started GET "/images/favicon.png" for 127.0.0.1 at Thu Nov 03 12:30:13 -0400 2011
+
+ActionController::RoutingError (No route matches "/images/favicon.png"):
+  
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/katello/test/qunit/" for 127.0.0.1 at Thu Nov 03 12:30:24 -0400 2011
+
+ActionController::RoutingError (No route matches "/katello/test/qunit"):
+  
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/images/favicon.png" for 127.0.0.1 at Thu Nov 03 12:30:40 -0400 2011
+
+ActionController::RoutingError (No route matches "/images/favicon.png"):
+  
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)

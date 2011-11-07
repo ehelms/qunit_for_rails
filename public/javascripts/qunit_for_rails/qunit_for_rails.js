@@ -56,7 +56,8 @@ var QUnit_For_Rails = {
         qo += "</div>";
         qo += qr;
         qo += "<div style='clear:both;'></div>";
-        qo += '</div>';
+        qo += '</div>'
+        qo += '<div id="testSuiteContainer"></div>';
         
         $("body").prepend(qo);
 
@@ -162,12 +163,6 @@ $(document).ready(function()
 
     $("#qunit-test-select").change( function() {
         if ($(this).val() !== "all" && $(this).val() !== "") {
-            /*QUnit.init();
-            QUnit.config.autorun = false;
-            QUnit.config.autostart = false;
-            QUnit.config.currentModule = "";
-            QUnit.page_load.clear_test_page();				*/
-
             QUnit_For_Rails.load_js_file($(this).val());
         } else if( $(this).val() === "all" ) {
             QUnit.init();

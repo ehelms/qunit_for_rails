@@ -17,6 +17,8 @@ QUnit.extensions.test_loader = (function(){
                 });
             }
 
+            toggle_containers(test_name);
+
             iframe = $('<iframe />', {
                         id : 'testFrame_' + test_name
                     }),
@@ -46,6 +48,15 @@ QUnit.extensions.test_loader = (function(){
 
             
             $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-url', QFR.root_url + '/javascripts/test/' + test_script);
+        },
+        toggle_containers = function(current_suite){
+            var suite;
+
+            for( suite in test_suites ){
+                if( suite !== current_suite ){
+                    $('#testFrame_' + suite).toggle();
+                }
+            }
         };
 
     return {

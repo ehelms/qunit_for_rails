@@ -20,16 +20,9 @@ var QUnit_For_Rails = {
 
         // define qunit results
         var qr = "";
-        //qr += "<div id=\"qunit-results\">";
         qr += "<h1 id=\"qunit-header\">Results</h1>";
-        //qr += "<h2 id=\"qunit-banner\"></h2>";
-        //qr += '<div id="qunit-testrunner-toolbar"></div>';
         qr += "<h2 id=\"qunit-userAgent\"></h2>";
         qr += '<img id="qunit-loading" src="' + QFR.root_url + '/images/i_loading_bar.gif" alt="loading">';
-        //qr += '<p id="qunit-testresult" class="result"></p>';
-        //qr += "<ol id=\"qunit-tests\"></ol>";
-        //qr += '<div id="qunit-fixture">test markup</div>';
-        //qr += "</div>";
 
         // tests list select
         var tl = "";
@@ -165,12 +158,7 @@ $(document).ready(function()
         if ($(this).val() !== "all" && $(this).val() !== "") {
             QUnit_For_Rails.load_js_file($(this).val());
         } else if( $(this).val() === "all" ) {
-            QUnit.init();
-            QUnit.config.autorun = false;
-            QUnit.config.autostart = false;
-
             for(var j in test_list) {
-                QUnit.page_load.clear_test_page();				
                 QUnit_For_Rails.load_js_file(test_list[j]);
             }
         }

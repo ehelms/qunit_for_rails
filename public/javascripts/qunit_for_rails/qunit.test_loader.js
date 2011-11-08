@@ -14,6 +14,7 @@ QUnit.extensions.test_loader = (function(){
                 
                 $('#testFrameHeader_' + test_name).live('click', function(){
                     iframe.toggle();
+                    toggle_containers(test_name);
                 });
             }
 

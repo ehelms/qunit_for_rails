@@ -25,11 +25,11 @@ iframe {
     background-color: #C6E746; 
     border-top: 2px solid #718526;
     border-bottom: 2px solid #718526;
-	color: #333;
+    color: #333;
 }
 .fail { 
-	color: #000000; 
-	background-color: #EE5757; 
+    color: #FFF; 
+    background-color: #EE5757; 
     border-top: 2px solid #913434;
     border-bottom: 2px solid #913434;
 }

@@ -14,6 +14,7 @@ iframe {
     height: 30px;
     background-color: #D2E0E6;   
     color: #528CE0; 
+    cursor: pointer;
 }
 
 .testFrameHeader h2 {

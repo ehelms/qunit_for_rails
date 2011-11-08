@@ -31,11 +31,14 @@ QUnit.extensions.test_loader = (function(){
             testFrameContainer.append(testFrameHeader);
             testFrameContainer.append(iframe);
 
+            iframe.load(function(){
+                get_scripts(test_name, filename)
+            });
+
             $('#testSuiteContainer').append(testFrameContainer);
             iframe.width('100%');
             iframe.height('500px');
 
-            get_scripts(test_name, filename);
         },
         get_scripts = function(test_name, test_script){
             var scripts = [];

@@ -20,7 +20,7 @@ var QUnit_For_Rails = {
 
         // define qunit results
         var qr = "";
-        qr += "<h1 id=\"qunit-header\">Results</h1>";
+        //qr += "<h1 id=\"qunit-header\">Results</h1>";
         qr += "<h2 id=\"qunit-userAgent\"></h2>";
         qr += '<img id="qunit-loading" src="' + QFR.root_url + '/images/i_loading_bar.gif" alt="loading">';
 
@@ -99,19 +99,6 @@ var QUnit_For_Rails = {
     load_js_file: function load_js_file(filename)
     {
         QUnit.extensions.test_loader.load(filename);
-        /*$.getScript(QFR.root_url + '/javascripts/test/' + filename, function(){
-            QUnit.config.currentModule = "";
-            QUnit.config.previousModule = "";
-
-            if( QUnit.page_load.is_page_loading() ){
-                $(document).bind('page_load_complete.qunit', function(){
-                    $(document).unbind('page_loading_complete.qunit');
-                    start();
-                });
-            } else {
-                start();
-            }
-        });*/
     },
 
     unload_js_file: function unload_js_file(filename)
@@ -168,12 +155,5 @@ $(document).ready(function()
         $("#qunit-test-select option:contains(all)").attr("selected", true);
         $("#qunit-test-select").change();
     });
-
-
-    var testresults = [];
-    QUnit.testDone = function(results){
-        console.log(results);
-          testresults.push(results);
-    };
 
 });

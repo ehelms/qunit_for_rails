@@ -13,8 +13,17 @@ QUnit.test_page = (function(){
         qr += "</div>";
 
         $("body").prepend(qr);
+        
+        QUnit.done = function(results){
+            if( results['failed'] !== 0 ){
+                parent.window.$('#testFrameHeader_' + $('body').data('id')).addClass('fail');
+            } else {
+                parent.window.$('#testFrameHeader_' + $('body').data('id')).addClass('pass');
+            }
+        } 
 
         $.getScript($('body').data('url'), function(){ QUnit.load(); });
+
     };
 
     return {

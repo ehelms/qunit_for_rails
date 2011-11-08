@@ -2,10 +2,36 @@ body {
     margin: 0;
 }
 
+iframe {
+	border: none;
+}
+
+.testFrameContainer {
+	border-bottom: 2px solid #000;
+}
+
 .testFrameHeader {
-    background: yellow;
-    border-top: 2px solid #DDD;
-    border-bottom: 2px solid #DDD;
+    height: 30px;
+    background-color: #D2E0E6;   
+    color: #528CE0; 
+}
+
+.testFrameHeader h2 {
+    font-size: 0.75em;
+    margin-left: 10px;
+}
+
+.pass { 
+    background-color: #C6E746; 
+    border-top: 2px solid #718526;
+    border-bottom: 2px solid #718526;
+	color: #333;
+}
+.fail { 
+	color: #000000; 
+	background-color: #EE5757; 
+    border-top: 2px solid #913434;
+    border-bottom: 2px solid #913434;
 }
 
 h1#qunit-header 

@@ -23,12 +23,14 @@ QUnit.extensions.test_loader = (function(){
                         id : 'testFrame_' + test_name
                     }),
             testFrameContainer = $('<div />', { id : 'testFrameContainer_' + test_name, class : 'testFrameContainer' }),
-            testFrameHeader = $('<div />', { id : 'testFrameHeader_' + test_name, class : 'testFrameHeader', style : 'height:50px' });
+            testFrameHeader = $('<div />', { id : 'testFrameHeader_' + test_name, class : 'testFrameHeader' });
             
+            testFrameHeader.append($('<h2/>', { text : "Tests for: " + filename }));
+
             testFrameContainer.append(testFrameHeader);
             testFrameContainer.append(iframe);
 
-            $('#testSuiteContainer').prepend(testFrameContainer);
+            $('#testSuiteContainer').append(testFrameContainer);
             iframe.width('100%');
             iframe.height('500px');
 
@@ -48,13 +50,14 @@ QUnit.extensions.test_loader = (function(){
 
             
             $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-url', QFR.root_url + '/javascripts/test/' + test_script);
+            $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-id', test_name);
         },
         toggle_containers = function(current_suite){
             var suite;
 
             for( suite in test_suites ){
                 if( suite !== current_suite ){
-                    $('#testFrame_' + suite).toggle();
+                    $('#testFrame_' + suite).hide();
                 }
             }
         };

@@ -1,6 +1,8 @@
 QUnit.test_page = (function(){
 
     var init = function(){
+        var test_suite;
+
         // define qunit results
         var qr = "";
         qr += "<h1 id=\"qunit-header\">Results</h1>";
@@ -22,12 +24,22 @@ QUnit.test_page = (function(){
             }
         } 
 
-        $.getScript($('body').data('url'), function(){ QUnit.load(); });
+        //$.getScript($('body').data('url'), function(){ QUnit.load(); });
+        test_suite = parent.window.QUnit.extensions.test_loader.get_suite($('body').data('testname'));
+        load_tests(test_suite);
 
+    },
+    load_tests = function(tests){
+        if( typeof tests === 'string' ){
+            QUnit.load();
+            var func = eval('[' + tests + ']')[0];
+            func();
+        }
     };
 
     return {
-        init : init
+        init        : init,
+        load_tests  : load_tests
     }
 
 })();

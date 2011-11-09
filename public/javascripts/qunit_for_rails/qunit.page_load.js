@@ -1,4 +1,4 @@
-QUnit.page_load = (function($){
+QUnit.page_load = (function(){
     var page_loading = false,
         
         get_container = function() {
@@ -19,20 +19,22 @@ QUnit.page_load = (function($){
 
             page_load_container.empty();
         },
-        set_test_page = function(url){
+        set_test_page = function(url, testsCallback){
             page_loading = true;
-
-            $.get(url)
+            
+            parent.window.QUnit.test_loader.load(test_name, testsCallback);
+        
+            /*$.get(url)
             .success(function(page){
                 clear_container();
                 add_page(page);   
                 page_loading = false;
-                $(document).trigger('page_load_complete.qunit');
+                //testsCallback();
             })
             .error(function(){
                 console.log('There was an error loading the page');
                 page_loading = false;
-            });
+            });*/
         };
     
 
@@ -42,4 +44,4 @@ QUnit.page_load = (function($){
         clear_test_page : clear_container
     };
 
-})(jQuery);
+})();

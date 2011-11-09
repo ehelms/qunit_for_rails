@@ -98,7 +98,7 @@ var QUnit_For_Rails = {
 
     load_js_file: function load_js_file(filename)
     {
-        QUnit.extensions.test_loader.load(filename);
+        $.getScript(QFR.root_url + '/javascripts/test/' + filename);
     },
 
     unload_js_file: function unload_js_file(filename)
@@ -127,7 +127,7 @@ var QUnit_For_Rails = {
 
 $(document).ready(function() 
 {
-    QUnit.load();
+    //QUnit.load();
     
     QUnit_For_Rails.init();
 

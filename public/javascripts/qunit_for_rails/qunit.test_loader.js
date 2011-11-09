@@ -1,38 +1,58 @@
+var QUnit = QUnit || {};
 QUnit.extensions = QUnit.extensions || {};
 
 QUnit.extensions.test_loader = (function(){
     var test_suites = {},
 
-        load = function(filename){
-            var test_name = filename.split('.js')[0],
-                iframe, testFrameContainer, testFrameHeader;
+        suite = function(){
+            if( arguments.length === 2 ){
+                if( typeof arguments[0] === 'string' && typeof arguments[1] === 'function' ){
+                    load(arguments[0], arguments[1]);
+                }
+            } else if( arguments.length === 3 ){
+                if( typeof arguments[0] === 'string' && typeof arguments[1] === 'object' &&  typeof arguments[2] === 'function' ){
+                    load(arguments[0], arguments[2], arguments[0]);
+                }
+            }
+        },
+        load = function(suite_name, tests, options){
+            var iframe, testFrameContainer, testFrameHeader,
+                options = options || {};
 
-            if( test_suites[test_name] !== undefined ){
-                $('#testFrameContainer_' + test_name).remove();
+            if( test_suites[suite_name] !== undefined ){
+                $('#testFrameContainer_' + suite_name).remove();
             } else {
-                test_suites[test_name] = filename;
+                test_suites[suite_name] = { 'name' : suite_name, 'tests' : String(tests) };
                 
-                $('#testFrameHeader_' + test_name).live('click', function(){
+                $('#testFrameHeader_' + suite_name).live('click', function(){
                     iframe.toggle();
-                    toggle_containers(test_name);
+                    toggle_containers(suite_name);
                 });
             }
 
-            toggle_containers(test_name);
-
-            iframe = $('<iframe />', {
-                        id : 'testFrame_' + test_name
-                    }),
-            testFrameContainer = $('<div />', { id : 'testFrameContainer_' + test_name, class : 'testFrameContainer' }),
-            testFrameHeader = $('<div />', { id : 'testFrameHeader_' + test_name, class : 'testFrameHeader' });
+            toggle_containers(suite_name);
             
-            testFrameHeader.append($('<h2/>', { text : "Tests for: " + filename }));
+            if( options['test_page'] ){ 
+                iframe = $('<iframe />', {
+                            id : 'testFrame_' + suite_name,
+                            href : fixture
+                        });
+            } else {
+                iframe = $('<iframe />', {
+                            id : 'testFrame_' + suite_name
+                        });
+            }
+            
+            testFrameContainer = $('<div />', { id : 'testFrameContainer_' + suite_name, class : 'testFrameContainer' });
+            testFrameHeader = $('<div />', { id : 'testFrameHeader_' + suite_name, class : 'testFrameHeader' });
+            
+            testFrameHeader.append($('<h2/>', { text : "Tests for test suite: " + suite_name }));
 
             testFrameContainer.append(testFrameHeader);
             testFrameContainer.append(iframe);
 
             iframe.load(function(){
-                get_scripts(test_name, filename)
+                get_scripts(suite_name);
             });
 
             $('#testSuiteContainer').append(testFrameContainer);
@@ -40,21 +60,22 @@ QUnit.extensions.test_loader = (function(){
             iframe.height('500px');
 
         },
-        get_scripts = function(test_name, test_script){
+        get_scripts = function(suite_name){
             var scripts = [];
             
             scripts.push($('<link />', { href : '/katello/stylesheets/qunit.css', rel : 'stylesheet', type : 'text/css' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/jquery-1.6.4.min.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.js', type : 'text/javascript' }));
+            scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.page_load.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.test_page.js', type : 'text/javascript' }));
 
             for( script in scripts){
-                $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('head')[0].appendChild(scripts[script][0]);
+                $('#testFrame_' + suite_name)[0].contentDocument.getElementsByTagName('head')[0].appendChild(scripts[script][0]);
             }
 
             
-            $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-url', QFR.root_url + '/javascripts/test/' + test_script);
-            $('#testFrame_' + test_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-id', test_name);
+            //$('#testFrame_' + suite_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-url', QFR.root_url + '/javascripts/test/' + test_script);
+            $('#testFrame_' + suite_name)[0].contentDocument.getElementsByTagName('body')[0].setAttribute('data-testname', suite_name);
         },
         toggle_containers = function(current_suite){
             var suite;
@@ -64,10 +85,15 @@ QUnit.extensions.test_loader = (function(){
                     $('#testFrame_' + suite).hide();
                 }
             }
+        },
+        get_suite = function(suite_name){
+            return test_suites[suite_name]['tests'];
         };
 
     return {
-        load    : load
+        load        : load,
+        suite       : suite,
+        get_suite   : get_suite
     };
 
 })();

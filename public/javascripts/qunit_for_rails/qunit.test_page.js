@@ -34,9 +34,10 @@ QUnit.test_page = function($){
     },
     load_tests = function(tests){
         if( typeof tests === 'string' ){
-            QUnit.load();
+            QUnit.init();
             var func = eval('[' + tests + ']')[0];
             func();
+            start();
         }
     };
 

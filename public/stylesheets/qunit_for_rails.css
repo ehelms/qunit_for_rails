@@ -7,19 +7,23 @@ iframe {
 }
 
 .testFrameContainer {
-	border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 .testFrameHeader {
     height: 30px;
     background-color: #D2E0E6;   
     color: #528CE0; 
+    border-top: 2px solid #CCC;
+    border-bottom: 2px solid #CCC;
     cursor: pointer;
 }
 
 .testFrameHeader h2 {
     font-size: 0.75em;
+    margin: 0;
     margin-left: 10px;
+    padding-top: 7px;
 }
 
 .pass { 

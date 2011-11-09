@@ -18,13 +18,12 @@ QUnit.test_page = (function(){
         
         QUnit.done = function(results){
             if( results['failed'] !== 0 ){
-                parent.window.$('#testFrameHeader_' + $('body').data('id')).addClass('fail');
+                parent.window.$('#testFrameHeader_' + $('body').data('testname')).addClass('fail');
             } else {
-                parent.window.$('#testFrameHeader_' + $('body').data('id')).addClass('pass');
+                parent.window.$('#testFrameHeader_' + $('body').data('testname')).addClass('pass');
             }
         } 
 
-        //$.getScript($('body').data('url'), function(){ QUnit.load(); });
         test_suite = parent.window.QUnit.extensions.test_loader.get_suite($('body').data('testname'));
         load_tests(test_suite);
 

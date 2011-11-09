@@ -11,7 +11,7 @@ QUnit.extensions.test_loader = (function(){
                 }
             } else if( arguments.length === 3 ){
                 if( typeof arguments[0] === 'string' && typeof arguments[1] === 'object' &&  typeof arguments[2] === 'function' ){
-                    load(arguments[0], arguments[2], arguments[0]);
+                    load(arguments[0], arguments[2], arguments[1]);
                 }
             }
         },
@@ -25,7 +25,8 @@ QUnit.extensions.test_loader = (function(){
                 test_suites[suite_name] = { 'name' : suite_name, 'tests' : String(tests) };
                 
                 $('#testFrameHeader_' + suite_name).live('click', function(){
-                    iframe.toggle();
+                    console.log('test click');
+                    $(this).siblings('iframe').toggle();
                     toggle_containers(suite_name);
                 });
             }
@@ -35,7 +36,7 @@ QUnit.extensions.test_loader = (function(){
             if( options['test_page'] ){ 
                 iframe = $('<iframe />', {
                             id : 'testFrame_' + suite_name,
-                            href : fixture
+                            src : options['test_page']
                         });
             } else {
                 iframe = $('<iframe />', {

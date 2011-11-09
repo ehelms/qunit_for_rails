@@ -115,6 +115,8 @@
 	box-shadow: inset 0px 2px 13px #999;
 	-moz-box-shadow: inset 0px 2px 13px #999;
 	-webkit-box-shadow: inset 0px 2px 13px #999;
+
+	display: none;
 }
 
 #qunit-tests table {

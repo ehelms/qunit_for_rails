@@ -1,4 +1,6 @@
-QUnit.test_page = (function(){
+var QUnit = QUnit || {};
+
+QUnit.test_page = function($){
 
     var init = function(){
         var test_suite;
@@ -18,8 +20,10 @@ QUnit.test_page = (function(){
         
         QUnit.done = function(results){
             if( results['failed'] !== 0 ){
+                parent.window.$('#testFrameHeader_' + $('body').data('testname')).find('h2:first').html('Failed!');
                 parent.window.$('#testFrameHeader_' + $('body').data('testname')).addClass('fail');
             } else {
+                parent.window.$('#testFrameHeader_' + $('body').data('testname')).find('h2:first').html('Passed!');
                 parent.window.$('#testFrameHeader_' + $('body').data('testname')).addClass('pass');
             }
         } 
@@ -41,8 +45,10 @@ QUnit.test_page = (function(){
         load_tests  : load_tests
     }
 
-})();
+};
 
 $(document).ready(function(){
-    QUnit.test_page.init();
+    var custom = $.noConflict(true);
+
+    QUnit.test_page(custom).init();
 });

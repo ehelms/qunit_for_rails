@@ -25,7 +25,6 @@ QUnit.extensions.test_loader = (function(){
                 test_suites[suite_name] = { 'name' : suite_name, 'tests' : String(tests) };
                 
                 $('#testFrameHeader_' + suite_name).live('click', function(){
-                    console.log('test click');
                     $(this).siblings('iframe').toggle();
                     toggle_containers(suite_name);
                 });
@@ -47,6 +46,7 @@ QUnit.extensions.test_loader = (function(){
             testFrameContainer = $('<div />', { id : 'testFrameContainer_' + suite_name, class : 'testFrameContainer' });
             testFrameHeader = $('<div />', { id : 'testFrameHeader_' + suite_name, class : 'testFrameHeader' });
             
+            testFrameHeader.append($('<h2/>', { text : "Running....." }));
             testFrameHeader.append($('<h2/>', { text : "Tests for test suite: " + suite_name }));
 
             testFrameContainer.append(testFrameHeader);
@@ -67,7 +67,6 @@ QUnit.extensions.test_loader = (function(){
             scripts.push($('<link />', { href : '/katello/stylesheets/qunit.css', rel : 'stylesheet', type : 'text/css' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/jquery-1.6.4.min.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.js', type : 'text/javascript' }));
-            scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.page_load.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.test_page.js', type : 'text/javascript' }));
 
             for( script in scripts){

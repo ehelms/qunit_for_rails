@@ -58,7 +58,6 @@ QUnit.extensions.test_loader = (function(){
 
             $('#testSuiteContainer').append(testFrameContainer);
             iframe.width('100%');
-            iframe.height('500px');
 
         },
         get_scripts = function(suite_name){

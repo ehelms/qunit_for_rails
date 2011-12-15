@@ -4,4 +4,5 @@ source "http://rubygems.org"
 # gem 'ruby-debug'
 # gem 'ruby-debug19'
 
-gemspec
+#gem "rails", "3.0.10"
+gem "haml", ">= 3.1.2"

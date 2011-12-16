@@ -51,5 +51,6 @@ QUnit.test_page = function($){
 $(document).ready(function(){
     var custom = $.noConflict(true);
 
+    $.getScript('/katello/javascripts/qunit_for_rails/jquery.mockjax.js');
     QUnit.test_page(custom).init();
 });

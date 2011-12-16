@@ -67,7 +67,6 @@ QUnit.extensions.test_loader = (function(){
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/jquery-1.6.4.min.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.js', type : 'text/javascript' }));
             scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/qunit.test_page.js', type : 'text/javascript' }));
-            scripts.push($('<script />', { src : '/katello/javascripts/qunit_for_rails/jquery.mockjax.js', type : 'text/javascript' }));
 
             for( script in scripts){
                 $('#testFrame_' + suite_name)[0].contentDocument.getElementsByTagName('head')[0].appendChild(scripts[script][0]);

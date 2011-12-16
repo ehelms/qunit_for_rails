@@ -5,4 +5,4 @@ source "http://rubygems.org"
 # gem 'ruby-debug19'
 
 #gem "rails", "3.0.10"
-gem "haml", ">= 3.1.2"
+gem "haml", "3.1.2"
